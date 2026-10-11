@@ -14,6 +14,9 @@ original `.properties` files. See [PORTING.md](PORTING.md) for the details.
 
 It opens the SAM head SAR distribution at 1800 MHz on start-up.
 
+**Live: https://jjviana.github.io/LogicViewPhoenix/** (published from `main` by
+the GitHub Pages workflow in `.github/workflows/pages.yml`).
+
 ## Running it
 
 It is a static site with no build step. Serve the repository root with any web
