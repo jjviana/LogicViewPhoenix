@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 14.3-b01-101 (Apple Inc.)
+Main-Class: com.logicstyle.mosaic.system.Kernel
+Class-Path: lib/customizer.jar lib/jmf.jar lib/mediaplayer.jar lib/mul
+ tiplayer.jar lib/jdom-1.0.jar
+X-COMMENT: Main-Class will be added automatically by build
+

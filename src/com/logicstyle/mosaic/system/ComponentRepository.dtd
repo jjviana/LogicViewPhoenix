@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    Typical usage:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE ComponentRepository SYSTEM "ComponentRepository.dtd">
+
+    <ComponentRepository>
+    ...
+    </ComponentRepository>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT ComponentRepository (component)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT class (#PCDATA)>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT component (class|name)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT name (#PCDATA)>

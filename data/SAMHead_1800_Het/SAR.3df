@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Created by juliano on October 18, 2001, 2:15 PM -->
+<FieldModel name="SAR" dimention="296,188,296" deltas="0.0011472,0.001523,0.0013407" timesteps="1" units="SAR [W/kg]">
+<data prefix="SAR" initialSufixCount="0" sufixIncrement="1"></data>
+<MaterialModel location ="material_3d_space.3dm"/>
+</FieldModel>

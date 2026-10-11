@@ -1,0 +1,323 @@
+Starting fdtd_solve...
+ ** Number of Processors = 2
+Starting solve.everything()...
+Problema a ser resolvido: (10) SAR 1.8GHz - SAM HEAD Heter
+TimeSteps = 4000
+Defining the problem space parameters...
+  ** DX = 0.0011472, DY = 0.001523, DZ = 0.0013407
+Defining the problem geometry...
+  ** Box: x = (-180.1104mm to 118.16159999999999mm)
+          y = (-20.459999999999997mm to 211.036mm)
+          z = (-210.4899mm to 138.0921mm).
+Defining sources and lumped element components...
+** Resistencia da fonte = 73 Ohms
+Defining output parameters...
+Initializing FDTD material grid...
+Calculating the number of cells in the problem space...
+   ** Tamanho do Dominio [m]: 0.3968472,0.286324,0.3968472
+   ** Tamanho do Dominio [cells]: 296,188,296
+create_bricks()..
+Reading DAT :: Size X = 259, Size Y = 151, Size Z =259
+Calculate_material_component_values()
+   ** Filling material components arrays...
+creating PEC plates on the material grid
+ *** GRAVANDO material_3d_space.dat
+ *** GRAVANDO 3DM de material_3d_space
+Initializing FDTD parameters and arrays...
+** initialize_fdtd_parameters_and_arrays() :: dt = 2.2711115698023574E-12s
+   ** Creating field arrays
+Initializing sources and lumped element components...
+Initializing source waveforms...
+   ** Voltage source number 1 (is, js, ks) = (176,32,175)
+   ** Voltage source number 1 (ie, je, ke) = (176,32,177)
+   ** Voltage_sources[ind].direction.charAt(0) = z
+   ** Voltage_sources[ind].direction.charAt(1) = p
+   ** Fonte em ie =176 is=176 je=32 js=32 ke=177 ks=175
+   ** Voltage source at z with r_magnitude_factor =0.5
+   ** Voltage source v_magnitude_factor = 0.5
+   ** Voltage source r_magnitude_factor = 0.5
+   ** Voltage source resistance = 73.0
+   ** Voltage source resistance_per_component = 36.5
+Initializing general updating coefficients...
+Initializing voltage source updating coefficients...
+Initializing thin wire updating coefficients...
+Initialize_boundary_conditions()...
+Initialize CPML boundary condition...
+Initializing farfield arrays
+Initializing display parameters
+   ** NX = 296, NY = 188, NZ =296
+---> Starting the time marching loop
+Total number of time steps : 4000
+Updating_magnetic_field_CPML_ABC()...
+Updating_electric_field_CPML_ABC()
+Updating electric field components associated with the voltage sources
+Inicializando o Capture_Dipole_Field
+** FONTE EM : 176,32,175
+ ** Pegando ponto 1 = (176,33,175).
+ ** Pegando ponto 2 = (176,34,175).
+ ** Pegando ponto 3 = (176,35,175).
+ ** Pegando ponto 4 = (176,36,175).
+ ** Pegando ponto 5 = (176,37,175).
+ ** Pegando ponto 6 = (176,38,175).
+ ** Pegando ponto 7 = (176,39,175).
+ ** Pegando ponto 8 = (176,40,175).
+ ** Pegando ponto 9 = (176,41,175).
+ ** Pegando ponto 10 = (176,42,175).
+ ** Pegando ponto 11 = (176,43,175).
+ ** Pegando ponto 12 = (176,44,175).
+ ** Pegando ponto 13 = (176,45,175).
+ ** Pegando ponto 14 = (176,46,175).
+ ** Pegando ponto 15 = (176,47,175).
+ ** Pegando ponto 16 = (176,48,175).
+ ** Pegando ponto 17 = (176,49,175).
+ ** Pegando ponto 18 = (176,50,175).
+ ** Pegando ponto 19 = (176,51,175).
+ ** Pegando ponto 20 = (176,52,175).
+ ** Pegando ponto 21 = (176,53,175).
+ ** Pegando ponto 22 = (176,54,175).
+ ** Pegando ponto 23 = (176,55,175).
+ ** Pegando ponto 24 = (176,56,175).
+ ** Pegando ponto 25 = (176,57,175).
+ ** Pegando ponto 26 = (176,58,175).
+ ** Pegando ponto 27 = (176,59,175).
+ ** Pegando ponto 28 = (176,60,175).
+ ** Pegando ponto 29 = (176,61,175).
+ ** Pegando ponto 30 = (176,62,175).
+ ** Pegando ponto 31 = (176,63,175).
+ ** Pegando ponto 32 = (176,64,175).
+ ** Pegando ponto 33 = (176,65,175).
+ ** Pegando ponto 34 = (176,66,175).
+ ** Pegando ponto 35 = (176,67,175).
+ ** Pegando ponto 36 = (176,68,175).
+ ** Pegando ponto 37 = (176,69,175).
+ ** Pegando ponto 38 = (176,70,175).
+ ** Pegando ponto 39 = (176,71,175).
+ ** Pegando ponto 40 = (176,72,175).
+ ** Pegando ponto 41 = (176,73,175).
+ ** Pegando ponto 42 = (176,74,175).
+ ** Pegando ponto 43 = (176,75,175).
+ ** Pegando ponto 44 = (176,76,175).
+ ** Pegando ponto 45 = (176,77,175).
+ ** Pegando ponto 46 = (176,78,175).
+ ** Pegando ponto 47 = (176,79,175).
+ ** Pegando ponto 48 = (176,80,175).
+ ** Pegando ponto 49 = (176,81,175).
+ ** Pegando ponto 50 = (176,82,175).
+ ** Pegando ponto 51 = (176,83,175).
+ ** Pegando ponto 52 = (176,84,175).
+ ** Pegando ponto 53 = (176,85,175).
+ ** Pegando ponto 54 = (176,86,175).
+ ** Pegando ponto 55 = (176,87,175).
+ ** Pegando ponto 56 = (176,88,175).
+ ** Pegando ponto 57 = (176,89,175).
+ ** Pegando ponto 58 = (176,90,175).
+ ** Pegando ponto 59 = (176,91,175).
+ ** Pegando ponto 60 = (176,92,175).
+ ** Pegando ponto 61 = (176,93,175).
+ ** Pegando ponto 62 = (176,94,175).
+ ** Pegando ponto 63 = (176,95,175).
+ ** Pegando ponto 64 = (176,96,175).
+ ** Pegando ponto 65 = (176,97,175).
+ ** Pegando ponto 66 = (176,98,175).
+ ** Pegando ponto 67 = (176,99,175).
+ ** Pegando ponto 68 = (176,100,175).
+ ** Pegando ponto 69 = (176,101,175).
+ ** Pegando ponto 70 = (176,102,175).
+ ** Pegando ponto 71 = (176,103,175).
+ ** Pegando ponto 72 = (176,104,175).
+ ** Pegando ponto 73 = (176,105,175).
+ ** Pegando ponto 74 = (176,106,175).
+ ** Pegando ponto 75 = (176,107,175).
+ ** Pegando ponto 76 = (176,108,175).
+ ** Pegando ponto 77 = (176,109,175).
+ ** Pegando ponto 78 = (176,110,175).
+ ** Pegando ponto 79 = (176,111,175).
+ ** Pegando ponto 80 = (176,112,175).
+ ** Pegando ponto 81 = (176,113,175).
+ ** Pegando ponto 82 = (176,114,175).
+ ** Pegando ponto 83 = (176,115,175).
+ ** Pegando ponto 84 = (176,116,175).
+ ** Pegando ponto 85 = (176,117,175).
+ ** Pegando ponto 86 = (176,118,175).
+*** Nao foi implementado  capture_sampled_electric_fields()
+*** Nao foi implementado  capture_sampled_voltages()
+*** Nao foi implementado calculate_JandM()
+*** Nao foi implementado  display_sampled_parameters()
+   ** Time_step = 100
+   ** Time_step = 200
+   ** Time_step = 300
+   ** Time_step = 400
+   ** Time_step = 500
+   ** Time_step = 600
+   ** Time_step = 700
+   ** Time_step = 800
+   ** Time_step = 900
+   ** Time_step = 1000
+   ** Time_step = 1100
+   ** Time_step = 1200
+   ** Time_step = 1300
+   ** Time_step = 1400
+   ** Time_step = 1500
+   ** Time_step = 1600
+   ** Time_step = 1700
+   ** Time_step = 1800
+   ** Time_step = 1900
+   ** Time_step = 2000
+   ** Time_step = 2100
+   ** Time_step = 2200
+   ** Time_step = 2300
+   ** Time_step = 2400
+   ** Time_step = 2500
+   ** Time_step = 2600
+ *** GRAVANDO EN2670
+ *** GRAVANDO EN2680
+ *** GRAVANDO EN2690
+   ** Time_step = 2700
+ *** GRAVANDO EN2700
+ *** GRAVANDO EN2710
+ *** GRAVANDO EN2720
+ *** GRAVANDO EN2730
+ *** GRAVANDO EN2740
+ *** GRAVANDO EN2750
+ *** GRAVANDO EN2760
+ *** GRAVANDO EN2770
+ *** GRAVANDO EN2780
+ *** GRAVANDO EN2790
+   ** Time_step = 2800
+ *** GRAVANDO EN2800
+ *** GRAVANDO EN2810
+ *** GRAVANDO EN2820
+ *** GRAVANDO EN2830
+ *** GRAVANDO EN2840
+ *** GRAVANDO EN2850
+ *** GRAVANDO EN2860
+ *** GRAVANDO EN2870
+ *** GRAVANDO EN2880
+ *** GRAVANDO EN2890
+   ** Time_step = 2900
+ *** GRAVANDO EN2900
+ *** GRAVANDO EN2910
+ *** GRAVANDO EN2920
+ *** GRAVANDO EN2930
+ *** GRAVANDO EN2940
+ *** GRAVANDO EN2950
+ *** GRAVANDO EN2960
+ *** GRAVANDO EN2970
+ *** GRAVANDO EN2980
+ *** GRAVANDO EN2990
+   ** Time_step = 3000
+ *** GRAVANDO EN3000
+ *** GRAVANDO EN3010
+ *** GRAVANDO EN3020
+ *** GRAVANDO EN3030
+ *** GRAVANDO EN3040
+ *** GRAVANDO EN3050
+ *** GRAVANDO EN3060
+ *** GRAVANDO EN3070
+ *** GRAVANDO EN3080
+ *** GRAVANDO EN3090
+   ** Time_step = 3100
+ *** GRAVANDO EN3100
+ *** GRAVANDO EN3110
+ *** GRAVANDO EN3120
+ *** GRAVANDO EN3130
+ *** GRAVANDO EN3140
+ *** GRAVANDO EN3150
+ *** GRAVANDO EN3160
+ *** GRAVANDO EN3170
+ *** GRAVANDO EN3180
+ *** GRAVANDO EN3190
+   ** Time_step = 3200
+ *** GRAVANDO EN3200
+ *** GRAVANDO EN3210
+ *** GRAVANDO EN3220
+ *** GRAVANDO EN3230
+ *** GRAVANDO EN3240
+ *** GRAVANDO EN3250
+ *** GRAVANDO EN3260
+ *** GRAVANDO EN3270
+ *** GRAVANDO EN3280
+ *** GRAVANDO EN3290
+   ** Time_step = 3300
+ *** GRAVANDO EN3300
+ *** GRAVANDO EN3310
+ *** GRAVANDO EN3320
+ *** GRAVANDO EN3330
+ *** GRAVANDO EN3340
+ *** GRAVANDO EN3350
+ *** GRAVANDO EN3360
+ *** GRAVANDO EN3370
+ *** GRAVANDO EN3380
+ *** GRAVANDO EN3390
+   ** Time_step = 3400
+ *** GRAVANDO EN3400
+ *** GRAVANDO EN3410
+ *** GRAVANDO EN3420
+ *** GRAVANDO EN3430
+ *** GRAVANDO EN3440
+ *** GRAVANDO EN3450
+ *** GRAVANDO EN3460
+ *** GRAVANDO EN3470
+ *** GRAVANDO EN3480
+ *** GRAVANDO EN3490
+   ** Time_step = 3500
+ *** GRAVANDO EN3500
+ *** GRAVANDO EN3510
+ *** GRAVANDO EN3520
+ *** GRAVANDO EN3530
+ *** GRAVANDO EN3540
+ *** GRAVANDO EN3550
+ *** GRAVANDO EN3560
+ *** GRAVANDO EN3570
+ *** GRAVANDO EN3580
+ *** GRAVANDO EN3590
+   ** Time_step = 3600
+ *** GRAVANDO EN3600
+ *** GRAVANDO EN3610
+ *** GRAVANDO EN3620
+ *** GRAVANDO EN3630
+ *** GRAVANDO EN3640
+ *** GRAVANDO EN3650
+ *** GRAVANDO EN3660
+ *** GRAVANDO EN3670
+ *** GRAVANDO EN3680
+ *** GRAVANDO EN3690
+   ** Time_step = 3700
+ *** GRAVANDO EN3700
+ *** GRAVANDO EN3710
+ *** GRAVANDO EN3720
+ *** GRAVANDO EN3730
+ *** GRAVANDO EN3740
+ *** GRAVANDO EN3750
+ *** GRAVANDO EN3760
+ *** GRAVANDO EN3770
+ *** GRAVANDO EN3780
+ *** GRAVANDO EN3790
+   ** Time_step = 3800
+ *** GRAVANDO EN3800
+ *** GRAVANDO EN3810
+ *** GRAVANDO EN3820
+ *** GRAVANDO EN3830
+ *** GRAVANDO EN3840
+ *** GRAVANDO EN3850
+ *** GRAVANDO EN3860
+ *** GRAVANDO EN3870
+ *** GRAVANDO EN3880
+ *** GRAVANDO EN3890
+   ** Time_step = 3900
+ *** GRAVANDO EN3900
+ *** GRAVANDO EN3910
+ *** GRAVANDO EN3920
+ *** GRAVANDO EN3930
+ *** GRAVANDO EN3940
+ *** GRAVANDO EN3950
+ *** GRAVANDO EN3960
+ *** GRAVANDO EN3970
+ *** GRAVANDO EN3980
+ *** GRAVANDO EN3990
+   ** Time_step = 4000
+ *** GRAVANDO EFinalN0
+ *** GRAVANDO 3DF de EFinal
+Total simulation time is = 360.448minutes.
+*** Nao foi implementado  post_process_and_display_results()
+Tempo total de simula??o = 21705.347 segundos = 361.75578333333334 minutos.

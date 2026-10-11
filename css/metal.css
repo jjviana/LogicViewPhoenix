@@ -1,0 +1,875 @@
+/*
+ * LogicView Phoenix: Swing's Metal look and feel, "Ocean" theme (Java 5+).
+ * Palette: primary1 #6382BF, primary2 #A3B8CC, primary3 #B8CFE5,
+ *          secondary1 #7A8A99, secondary2 #B8CFE5, secondary3 #EEEEEE.
+ */
+:root {
+    --primary1: #6382bf;
+    --primary2: #a3b8cc;
+    --primary3: #b8cfe5;
+    --secondary1: #7a8a99;
+    --secondary2: #b8cfe5;
+    --secondary3: #eeeeee;
+    --control-text: #333333;
+    --selected-tab: #c8ddf2;
+    --ocean-gradient: linear-gradient(to bottom, #dde8f3 0%, #ffffff 30%, #dde8f3 60%, #b8cfe5 100%);
+    --ocean-gradient-pressed: linear-gradient(to bottom, #b8cfe5 0%, #dde8f3 60%, #ffffff 100%);
+    --menubar-gradient: linear-gradient(to bottom, #ffffff 0%, #dadada 100%);
+    --desktop: #3a6ea5;
+    --font: 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Tahoma, Verdana, Arial, sans-serif;
+    color-scheme: light;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font: var(--font);
+    color: var(--control-text);
+    background: var(--desktop);
+}
+
+body.lv-busy,
+body.lv-busy * {
+    cursor: progress !important;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------------- frame */
+
+.lv-frame {
+    flex: none;
+    background: var(--secondary3);
+    border-bottom: 1px solid var(--secondary1);
+    z-index: 50000;
+    position: relative;
+}
+
+.lv-frame-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 22px;
+    padding: 0 6px;
+    background: var(--ocean-gradient);
+    border-bottom: 1px solid var(--primary2);
+    font-weight: bold;
+}
+
+.lv-frame-menubar .lv-menubar {
+    border-bottom: none;
+}
+
+/* ------------------------------------------------------------- desktop */
+
+#desktop {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.10), transparent 60%),
+        linear-gradient(160deg, #3f78b2 0%, #3a6ea5 45%, #2c5888 100%);
+}
+
+.lv-desktop-mark {
+    position: absolute;
+    right: 28px;
+    bottom: 12px;
+    font: italic bold 64px Georgia, "Times New Roman", serif;
+    letter-spacing: -1px;
+    color: rgba(255, 255, 255, 0.10);
+    pointer-events: none;
+    user-select: none;
+}
+
+.lv-boot {
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    padding: 14px 22px;
+    background: var(--secondary3);
+    border: 1px solid var(--secondary1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    z-index: 90000;
+}
+
+.lv-boot.lv-fatal {
+    border-color: #b00;
+    color: #800;
+    max-width: 90vw;
+}
+
+/* ------------------------------------------------------------- windows */
+
+.lv-window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 100%;
+    max-height: 100%;
+    background: var(--secondary3);
+    border: 1px solid var(--secondary1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.lv-window.lv-resizable {
+    resize: both;
+    overflow: hidden;
+    min-height: 120px;
+}
+
+.lv-window.lv-active {
+    border-color: var(--primary1);
+}
+
+.lv-window.lv-maximized {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    resize: none;
+}
+
+.lv-titlebar {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 22px;
+    padding: 0 3px 0 6px;
+    background: linear-gradient(to bottom, #f6f6f6, #dadada);
+    border-bottom: 1px solid var(--secondary1);
+    cursor: default;
+    user-select: none;
+    touch-action: none;
+}
+
+.lv-window.lv-active > .lv-titlebar {
+    background: var(--ocean-gradient);
+    border-bottom-color: var(--primary1);
+}
+
+.lv-title-icon {
+    width: 14px;
+    height: 14px;
+    flex: none;
+    background:
+        linear-gradient(135deg, transparent 45%, var(--primary1) 45%, var(--primary1) 55%, transparent 55%),
+        radial-gradient(circle at 35% 35%, #fff 0, #b8cfe5 40%, #6382bf 100%);
+    border: 1px solid #4a6aa5;
+    border-radius: 2px;
+}
+
+.lv-title-text {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.lv-title-buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.lv-title-button {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 1px solid var(--secondary1);
+    background: var(--ocean-gradient);
+    position: relative;
+    cursor: pointer;
+}
+
+.lv-title-button:active {
+    background: var(--ocean-gradient-pressed);
+}
+
+.lv-close::before,
+.lv-close::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 3px;
+    top: 6px;
+    height: 2px;
+    background: #333;
+    transform: rotate(45deg);
+}
+
+.lv-close::after {
+    transform: rotate(-45deg);
+}
+
+.lv-maximize::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px solid #333;
+    border-top-width: 2px;
+}
+
+.lv-content {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: block;
+}
+
+.lv-content.lv-column,
+.lv-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.lv-fill {
+    flex: 1;
+    min-height: 0;
+}
+
+.lv-padded {
+    padding: 8px 10px;
+}
+
+.lv-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 40, 70, 0.18);
+}
+
+/* --------------------------------------------------------------- menus */
+
+.lv-menubar {
+    display: flex;
+    height: 22px;
+    background: var(--menubar-gradient);
+    border-bottom: 1px solid var(--secondary1);
+}
+
+.lv-menu {
+    position: relative;
+}
+
+.lv-menu-button {
+    height: 100%;
+    padding: 0 9px;
+    border: 1px solid transparent;
+    background: none;
+    font: var(--font);
+    color: var(--control-text);
+}
+
+.lv-menu.lv-open > .lv-menu-button,
+.lv-menu-button:hover {
+    background: var(--primary3);
+    border-color: var(--primary2);
+}
+
+.lv-menu-popup {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 170px;
+    padding: 1px;
+    background: #ffffff;
+    border: 1px solid var(--secondary1);
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+    z-index: 60000;
+}
+
+.lv-menu.lv-open > .lv-menu-popup {
+    display: block;
+}
+
+.lv-menu-item {
+    display: block;
+    width: 100%;
+    padding: 3px 18px;
+    border: none;
+    background: none;
+    text-align: left;
+    font: var(--font);
+    color: var(--control-text);
+    white-space: nowrap;
+}
+
+.lv-menu-item:hover,
+.lv-menu-item:focus-visible {
+    background: var(--primary3);
+    outline: none;
+}
+
+/* ---------------------------------------------------------------- tabs */
+
+.lv-tabbedpane {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.lv-tabstrip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 4px 4px 0;
+}
+
+.lv-tab {
+    padding: 3px 12px 2px;
+    margin-right: -1px;
+    border: 1px solid var(--secondary1);
+    border-bottom: none;
+    background: var(--ocean-gradient);
+    font: var(--font);
+    color: var(--control-text);
+    cursor: pointer;
+}
+
+.lv-tab.lv-selected {
+    background: var(--selected-tab);
+    position: relative;
+    z-index: 1;
+}
+
+.lv-tabbody {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--secondary1);
+    border-top: 3px solid var(--selected-tab);
+    margin: 0 2px 2px;
+    background: var(--secondary3);
+}
+
+.lv-tabpage {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.lv-viewcontrolpanel {
+    flex: none;
+    border-bottom: 1px solid var(--secondary1);
+}
+
+.lv-viewcontrolpanel .lv-tabpage {
+    min-height: 34px;
+}
+
+/* ------------------------------------------------------------- widgets */
+
+.lv-button {
+    padding: 3px 12px;
+    border: 1px solid var(--secondary1);
+    border-radius: 0;
+    background: var(--ocean-gradient);
+    font: var(--font);
+    color: var(--control-text);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.lv-button:hover {
+    border-color: var(--primary1);
+}
+
+.lv-button:active {
+    background: var(--ocean-gradient-pressed);
+}
+
+.lv-button:focus-visible,
+.lv-tab:focus-visible,
+.lv-textfield:focus,
+.lv-combobox:focus,
+.lv-filelist:focus {
+    outline: 1px solid var(--primary2);
+    outline-offset: 1px;
+}
+
+.lv-button:disabled {
+    color: #999;
+    border-color: #bbb;
+    cursor: default;
+}
+
+.lv-textfield {
+    padding: 2px 4px;
+    border: 1px solid var(--secondary1);
+    background: #fff;
+    font: var(--font);
+    color: var(--control-text);
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.lv-combobox {
+    padding: 2px 4px;
+    border: 1px solid var(--secondary1);
+    background: var(--ocean-gradient);
+    font: var(--font);
+    color: var(--control-text);
+}
+
+.lv-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 0;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--primary1);
+    margin: 0;
+}
+
+.lv-slider {
+    accent-color: var(--primary1);
+    width: 260px;
+}
+
+.lv-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+}
+
+.lv-hint {
+    color: #667;
+    font-style: italic;
+    margin-left: 8px;
+}
+
+.lv-caption {
+    margin: 8px 0 3px;
+    font-weight: bold;
+}
+
+.lv-small {
+    font-size: 11px;
+    color: #556;
+}
+
+fieldset.lv-titled {
+    margin: 6px 8px;
+    padding: 6px 10px 8px;
+    border: 1px solid var(--secondary1);
+}
+
+fieldset.lv-titled > legend {
+    padding: 0 4px;
+    color: #2f4f80;
+}
+
+.lv-button-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 8px 10px;
+}
+
+.lv-button-row.lv-left {
+    justify-content: flex-start;
+    padding: 6px 0 0;
+}
+
+.lv-form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+}
+
+.lv-form-row {
+    display: grid;
+    grid-template-columns: 9.5em 1fr;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+}
+
+.lv-form-row > label {
+    text-align: right;
+}
+
+.lv-form-wide {
+    padding-left: calc(9.5em + 8px);
+}
+
+.lv-progress {
+    position: relative;
+    height: 14px;
+    margin: 6px 0;
+    border: 1px solid var(--secondary1);
+    background: #fff;
+    overflow: hidden;
+}
+
+.lv-progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(to bottom, #c8ddf2, #6382bf);
+    transition: width 0.15s linear;
+}
+
+.lv-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    background: #fff;
+    border-bottom: 1px solid var(--secondary1);
+}
+
+/* ---------------------------------------------------- option panes etc. */
+
+.lv-optionpane,
+.lv-progressmonitor {
+    min-width: 300px;
+    max-width: 560px;
+}
+
+.lv-option-body,
+.lv-progress-body {
+    display: flex;
+    gap: 14px;
+    padding: 14px 16px 4px;
+}
+
+.lv-progress-text {
+    flex: 1;
+    min-width: 240px;
+}
+
+.lv-progress-note {
+    margin-top: 4px;
+    color: #445;
+    font-size: 11px;
+    min-height: 1.2em;
+}
+
+.lv-option-message {
+    align-self: center;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.lv-option-icon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font: bold 20px Georgia, serif;
+    color: #fff;
+}
+
+.lv-icon-information {
+    background: radial-gradient(circle at 35% 30%, #a8c4e8, #3a66b0);
+}
+
+.lv-icon-information::after {
+    content: "i";
+}
+
+.lv-icon-error {
+    background: radial-gradient(circle at 35% 30%, #f08a8a, #b02020);
+}
+
+.lv-icon-error::after {
+    content: "\00d7";
+}
+
+.lv-icon-warning {
+    border-radius: 3px;
+    background: radial-gradient(circle at 35% 30%, #ffe48a, #d9a100);
+    color: #333;
+}
+
+.lv-icon-warning::after {
+    content: "!";
+}
+
+.lv-icon-question {
+    background: radial-gradient(circle at 35% 30%, #b5e3a5, #3f8f2c);
+}
+
+.lv-icon-question::after {
+    content: "?";
+}
+
+/* ---------------------------------------------------------- 3D view */
+
+.lv-voxellview {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.lv-canvas3d {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    background: #fff;
+}
+
+.lv-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    outline: none;
+    touch-action: none;
+}
+
+/* -------------------------------------------------------- color scale */
+
+.lv-colorpanel {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+.lv-colorbar-holder {
+    flex: 1;
+    min-height: 200px;
+    position: relative;
+}
+
+.lv-colorbar {
+    position: absolute;
+    inset: 0;
+}
+
+.lv-colorbutton {
+    min-width: 110px;
+    background-image: none;
+    font-size: 10px;
+}
+
+.lv-hidden-color {
+    position: fixed;
+    left: -100px;
+    top: -100px;
+    opacity: 0;
+}
+
+/* ------------------------------------------------------------ materials */
+
+.lv-materials {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    background: #fff;
+}
+
+.lv-material {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 4px;
+    cursor: pointer;
+}
+
+.lv-material:hover {
+    background: #eef4fb;
+}
+
+.lv-material input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.lv-material-icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+}
+
+.lv-material input:focus-visible + .lv-material-icon {
+    outline: 1px solid var(--primary1);
+    outline-offset: 1px;
+}
+
+/* ------------------------------------------------------------ plane cut */
+
+.lv-slider-row {
+    display: grid;
+    grid-template-columns: 3.5em 1fr;
+    align-items: center;
+    gap: 6px;
+}
+
+.lv-interpolator-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 6px;
+}
+
+.lv-interpolator-panel .lv-flow {
+    padding: 2px 0;
+}
+
+/* -------------------------------------------------------- file chooser */
+
+.lv-chooser .lv-form-row {
+    grid-template-columns: auto 1fr;
+}
+
+.lv-dropzone {
+    margin: 8px 0 0;
+    padding: 12px;
+    border: 1px dashed var(--secondary1);
+    background: #fff;
+}
+
+.lv-dropzone.lv-dragging {
+    border-color: var(--primary1);
+    background: #eef4fb;
+}
+
+.lv-dropzone-title {
+    color: #445;
+}
+
+.lv-filelist {
+    width: 100%;
+    border: 1px solid var(--secondary1);
+    font: var(--font);
+    background: #fff;
+}
+
+.lv-filelist option {
+    padding: 2px 4px;
+}
+
+/* ------------------------------------------------------ debug and about */
+
+.lv-debug-output {
+    flex: 1;
+    min-height: 0;
+    margin: 0;
+    padding: 6px 8px;
+    overflow: auto;
+    background: #fff;
+    border-bottom: 1px solid var(--secondary1);
+    font: 11px/1.35 ui-monospace, "DejaVu Sans Mono", Menlo, Consolas, monospace;
+    white-space: pre;
+}
+
+.lv-about {
+    width: 420px;
+}
+
+.lv-about-body {
+    padding: 16px 20px 0;
+    line-height: 1.45;
+}
+
+.lv-about-logo {
+    font: italic bold 34px Georgia, "Times New Roman", serif;
+    color: var(--primary1);
+}
+
+/* -------------------------------------------------- printing, animation */
+
+.lv-printconstructor {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+
+.lv-elements {
+    flex: none;
+    align-self: flex-start;
+}
+
+.lv-preview {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.lv-preview-holder {
+    flex: 1;
+    min-height: 120px;
+    position: relative;
+    background: #fff;
+}
+
+.lv-preview-canvas {
+    position: absolute;
+    inset: 0;
+}
+
+.lv-animation-properties {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 24px;
+}
+
+.lv-animation-properties .lv-form-row {
+    grid-template-columns: 11em auto;
+}
+
+.lv-framepane {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    background: #fff;
+    border-top: 1px solid var(--secondary1);
+    display: grid;
+    place-items: center;
+}
+
+.lv-framedisplay {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@media (max-width: 600px) {
+    .lv-desktop-mark {
+        font-size: 40px;
+    }
+
+    .lv-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .lv-form-row > label {
+        text-align: left;
+    }
+
+    .lv-form-wide {
+        padding-left: 0;
+    }
+}

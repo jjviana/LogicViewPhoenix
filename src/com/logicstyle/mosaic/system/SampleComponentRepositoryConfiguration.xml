@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : SampleComponentRepositoryConfiguration.xml
+    Created on : October 29, 2002, 10:36 PM
+    Author     : juliano
+    Description:
+        Purpose of the document follows.
+-->
+
+<!DOCTYPE ComponentRepository SYSTEM "ComponentRepository.dtd">
+
+<ComponentRepository>
+   <component>
+        <class>org.myprog.impl.SampleComponent1</class>
+   </component>
+</ComponentRepository>
+

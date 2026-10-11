@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logicview</title>
+    <meta name="description" content="LogicView Phoenix: the LogicView voxel model viewer, ported from Java 3D to WebGL.">
+    <link rel="stylesheet" href="css/metal.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./vendor/three/three.module.min.js",
+                "three/addons/": "./vendor/three/addons/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main-frame" class="lv-frame" hidden>
+        <div class="lv-frame-titlebar">
+            <span class="lv-title-icon"></span>
+            <span class="lv-frame-title">Logicview</span>
+        </div>
+        <div class="lv-frame-menubar"></div>
+    </div>
+    <div id="desktop">
+        <div class="lv-desktop-mark" aria-hidden="true">LogicView</div>
+    </div>
+    <div id="boot" class="lv-boot">Starting LogicView&hellip;</div>
+    <noscript><p class="lv-boot">LogicView needs JavaScript and WebGL.</p></noscript>
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>

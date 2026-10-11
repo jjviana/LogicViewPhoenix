@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Repository.xml
+    Created on : October 30, 2002, 8:28 PM
+    Author     : juliano
+    Description:
+        The components that make up LogicView.
+
+    LogicView Phoenix (2026): the same list of components, now ES modules.
+    Each class name maps to src/<package path>/<Class>.js. Additions and
+    replacements are marked below.
+-->
+
+<!DOCTYPE ComponentRepository >
+<ComponentRepository>
+  <!-- Main window -->
+    <component>
+        <class>com.logicstyle.logicview.MainWindow.MainWindowImpl</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.MainWindow.MultiViewPresenter</class>
+    </component>
+
+
+   <!-- UI Actions -->
+    <component>
+        <class>com.logicstyle.logicview.UIAction.LoadModel</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.UIAction.SaveViewSnapshot</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.animation.AnimateUIAction</class>
+    </component>
+    <!-- Phoenix: shows what used to be written to debug.txt -->
+    <component>
+        <class>com.logicstyle.logicview.UIAction.ShowDebugOutput</class>
+    </component>
+    <!-- Phoenix: about box -->
+    <component>
+        <class>com.logicstyle.logicview.UIAction.About</class>
+    </component>
+
+
+    <!-- Loaders -->
+    <component>
+        <class>com.logicstyle.logicview.loader.material.MaterialModelLoader</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.loader.field.FieldModelLoader</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.loader.field.FieldLogModelLoader</class>
+    </component>
+
+    <!-- Viewers -->
+    <component>
+        <class>com.logicstyle.logicview.viewer.voxell.VoxellModelViewer</class>
+    </component>
+
+    <!-- Scene controls -->
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.zoom.ZoomSceneControlFactory</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.rotate.RotateSceneControlFactory</class>
+    </component>
+
+    <!-- Voxell transform tools -->
+
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.stats.ViewStatistics</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.material.MaterialSelectionVoxellTransformControlFactory</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.planecut.PlaneCutVoxellTransformControlFactory</class>
+    </component>
+   <component>
+        <class>com.logicstyle.logicview.viewer.controls.timestep.TimeStepSelectorViewControlFactory</class>
+   </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.value.ValueSelectionVoxellTransformControlFactory</class>
+   </component>
+    <!-- Geometry generation tools -->
+    <component>
+        <class>com.logicstyle.logicview.viewer.controls.geometry.PolyedronGeometryGeneratorFactory</class>
+    </component>
+
+    <!-- Color generation tools -->
+   <component>
+        <class>com.logicstyle.logicview.viewer.controls.color.MaterialModelVoxellColorGeneratorFactory</class>
+    </component>
+   <component>
+        <class>com.logicstyle.logicview.viewer.controls.color.FieldModelVoxellColorGeneratorFactory</class>
+    </component>
+
+    <!-- Printing -->
+    <component>
+        <class>com.logicstyle.logicview.viewer.printing.DefaultViewPrinter</class>
+    </component>
+     <component>
+        <class>com.logicstyle.logicview.viewer.printing.DefaultViewPrintConstructorFactory</class>
+    </component>
+    <component>
+        <class>com.logicstyle.logicview.viewer.printing.file.FileImagePrinterFactory</class>
+    </component>
+
+
+    <!-- Animation encoders -->
+    <!-- Phoenix: the Java Media Framework QuickTime encoder
+         (viewer.animation.jmf.JmfAnimationEncoderFactory) is replaced by a
+         MediaRecorder based WebM encoder. -->
+    <component>
+        <class>com.logicstyle.logicview.viewer.animation.webm.WebMAnimationEncoderFactory</class>
+    </component>
+
+    <!-- Phoenix: opens the SAM head SAR model when the application starts -->
+    <component>
+        <class>com.logicstyle.logicview.UIAction.StartupModel</class>
+    </component>
+
+</ComponentRepository>
