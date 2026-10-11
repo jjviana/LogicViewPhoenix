@@ -21,7 +21,14 @@ export async function forName(className) {
     try {
         module = await import(url.href);
     } catch (e) {
-        throw new ClassNotFoundException(className, e);
+        // A failed import is cached by URL, so a transient network error (a
+        // site being redeployed, say) is retried once under a different URL.
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            module = await import(url.href + '?retry=' + Date.now());
+        } catch (e2) {
+            throw new ClassNotFoundException(className, e);
+        }
     }
     const cls = module[simpleName];
     if (typeof cls !== 'function') {

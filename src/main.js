@@ -15,6 +15,20 @@ function fatal(message) {
     boot.textContent = message;
 }
 
+/** Some components could not be loaded: say which, instead of failing later. */
+async function reportComponentFailures(failures) {
+    if (!failures || failures.length === 0) {
+        return;
+    }
+    const { JOptionPane } = await import('./compat/swing/Swing.js');
+    const lines = failures.map((f) => '\u2022 ' + f.component.substring(f.component.lastIndexOf('.') + 1) + ': ' + f.reason);
+    JOptionPane.showMessageDialog(null,
+        'Some LogicView components could not be started, so parts of the application will not work:\n\n'
+        + lines.join('\n')
+        + '\n\nIf the site was just updated, reload the page (Shift+Reload) in a few minutes.',
+        'Components not started', JOptionPane.WARNING_MESSAGE);
+}
+
 function hasWebGL2() {
     try {
         return !!document.createElement('canvas').getContext('webgl2');
@@ -30,6 +44,7 @@ if (!hasWebGL2()) {
     try {
         window.logicview = await Kernel.main(config ? [config] : []);
         document.getElementById('boot').hidden = true;
+        reportComponentFailures(window.logicview.failures);
     } catch (e) {
         console.error(e);
         fatal('LogicView could not start: ' + (e.message || e));

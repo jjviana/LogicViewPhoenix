@@ -78,7 +78,13 @@ directly instead of building `Vector`s of `Point3f`.
 * The load progress monitor follows the loaders' and viewer's progress events
   (the original declared them, but nothing listened).
 
-All additions are ordinary components listed in `Repository.xml`.
+* If a component cannot be loaded or initialized, the kernel still carries on
+  without it (as the original did), but the user is told which one and why
+  instead of finding out later from an unrelated error; a failed module
+  download is retried once.
+
+Except for the last point, the additions are ordinary components listed in
+`Repository.xml`.
 
 ## Behavior changes (bugs of the original fixed on the way)
 

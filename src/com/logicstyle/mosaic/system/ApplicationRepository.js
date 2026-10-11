@@ -35,25 +35,30 @@ export class ApplicationRepository {
     static async load(config) {
         const root = config.documentElement;
         const instances = [];
+        const failures = [];
         for (const component of root.children) {
             if (component.tagName !== 'component') {
                 continue;
             }
+            const classElement = [...component.children].find((c) => c.tagName === 'class');
+            const clname = classElement ? classElement.textContent.trim() : '';
             try {
-                const classElement = [...component.children].find((c) => c.tagName === 'class');
-                const clname = classElement ? classElement.textContent.trim() : '';
                 const componentClass = await forName(clname);
                 instances.push(new componentClass());
             } catch (e) {
-                log.log(Level.WARNING, 'Error loading component ', e);
+                log.log(Level.WARNING, 'Error loading component ' + clname, e.cause || e);
+                failures.push({ component: clname, reason: describe(e.cause || e) });
             }
         }
-        return new ApplicationRepository(instances);
+        return new ApplicationRepository(instances, failures);
     }
 
-    constructor(instances) {
+    constructor(instances, failures = []) {
         this.components = new Map();
         this.component_list = [];
+        // Phoenix: the components that could not be loaded or initialized
+        // (the original only logged them), so the application can tell the user.
+        this.failures = failures;
         for (const instance of instances) {
             for (const i of Interface.getClassInterfaces(instance.constructor)) {
                 this.addComponentClass(i, instance);
@@ -77,6 +82,7 @@ export class ApplicationRepository {
                         log.log(Level.WARNING, 'Initialization of component ' + c.getName() + ' failed due to failed dependency: ' + e.getRequired().getName());
                     } else {
                         log.log(Level.SEVERE, 'Initialization of component ' + safeName(c) + ' failed due to exception', e);
+                        this.failures.push({ component: safeName(c), reason: describe(e) });
                     }
                     this.removeComponent(c);
                     current_state.splice(i, 1);
@@ -142,6 +148,10 @@ export class ApplicationRepository {
 
 function equals(a, b) {
     return a.length === b.length && a.every((v, i) => v === b[i]);
+}
+
+function describe(e) {
+    return e && e.message ? e.message : String(e);
 }
 
 function safeName(c) {
